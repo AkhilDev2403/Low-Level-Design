@@ -2,7 +2,7 @@ package Concurrency1.InroToThread.UsingImplementRunnable;
 
 public class NumberPrinter implements Runnable{
 
-    private int number;
+    public int number;
 
     NumberPrinter(int number){
         this.number = number;

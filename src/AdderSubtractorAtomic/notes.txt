@@ -1,0 +1,38 @@
+ way 1.
+        Use a concurrent data structure - it won't allow to play with threads concurrently.
+
+        Instead of
+            private List<Object> items;
+
+        make it as
+            private ConcurrentLinkedQueue<Object> items;
+
+        Also change this line
+            this.items.remove(this.items.size()-1);
+        to
+            this.items.remove();
+
+        Now the size won't get exceeded.
+
+we can use this concurrent data structure in the Adder subtarctor prblm as well
+
+way . 2
+Concurrent type - Atomic Integer
+
+
+Since we are using this AtomicInteger
+instead of this
+        public int value = 0;
+make the value/shared resource type as this concurrent type
+     public AtomicInteger value = new AtomicInteger(0);
+
+     so we don't require any sync block/ method to solve this problem. our integer/value will act as
+     an atomic type. it will handle xle threads concurrently.
+
+changes in the adder sub class as well
+instead of this,
+            this.v.value += i;
+   make it
+            this.v.value.addAndGet(i);
+   in the sub as well
+              this.v.value.addAndGet(-i);

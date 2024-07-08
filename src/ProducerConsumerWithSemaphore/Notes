@@ -82,5 +82,9 @@ Semaphore consumerSemaphore = new Semaphore(0);
 
         Now the size won't get exceeded.
 
+we can use this concurrent data structure in the Adder subtarctor prblm as well
+
+way . 2
+Concurrent type - Atomic Integer
 
 

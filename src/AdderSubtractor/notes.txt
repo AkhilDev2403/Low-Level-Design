@@ -1,0 +1,41 @@
+Here we have to return something.
+we can't relay on Runnable, because it has a function -> void run()
+so if we wanted to return something in multithreading we should use -> Callable interface
+Callable<T> has a function T call();
+
+    @Override
+    public Void call() throws Exception {
+        for (int i = 1; i <= 100; i++) {
+            this.v.value += i;
+        }
+        return null;
+    }
+
+        @Override
+        public Void call() throws Exception {
+            for (int i = 1; i <= 100; i++) {
+                this.v.value -= i;
+            }
+            return null;
+        }
+
+
+        when we do this we may get chances the value of 0;  you will get different values
+        but if we iterate through 10000 and do add or sub and multiple threads comes at the same time
+        we may never get 0.  Why ?
+
+        synchronization issue - xle threads accessing the same resource (vale) at the same time.
+
+        1. Critical section
+        2. Race condition
+        3. Pre emptiness
+
+
+        1. What can we do ?
+        solution -> the shared data shouldn't accessed at the same time.
+
+        1. Mutex Lock
+
+        Solution.1 - lock() and unlock()
+
+        (see AdderSubtracterLock package)

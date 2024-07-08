@@ -1,0 +1,86 @@
+Problem.1
+
+We had to/resolve the sync issue, bcz when xle threads accessing the same shared resource at the same time
+we will get the max size beyond what we have given.
+it is bcz xle threads coming and satisfies the if condition on both prod and cons class.
+
+Error  : Index -1 out of bounds for length 0
+         	at java.base/jdk.internal.util.Preconditions.outOfBounds(Preconditions.java:100)
+         	at java.base/jdk.internal.util.Preconditions.outOfBoundsCheckIndex(Preconditions.java:106)
+         	at java.base/jdk.internal.util.Preconditions.checkIndex(Preconditions.java:302)
+
+the sync issue occurs here
+    a. critical section
+    b. race condition
+    c. pre-emptiness
+
+    How to solve this ?
+    ans -> add sync lock or block
+
+Still we have some logic problem
+
+Problem.2
+
+The problem here is only one thread (producer/consumer) can enter at the same time
+because what if i have 5 shelves/store size is available and there are 3 p's already produced.
+Now 2 p's can produce and 3 cons can consume at the same time.
+
+So we need to resolve this.
+
+we need to let multiple threads to access the same shares resources at the same time.
+
+How do we do this  ?  -> using Semaphores
+
+solution:
+
+Semaphores -> Mutex Lock + count
+
+we don't need to use the sync block or lock or anything. jst implement the semaphore
+
+Semaphore producerSemaphore = new Semaphore(5);  initial permit
+Semaphore consumerSemaphore = new Semaphore(0);
+
+  @Override
+    public void run() {
+        while(true){
+            try {
+                producerSemaphore.acquire();
+            }
+            catch (InterruptedException e){
+                throw new RuntimeException();
+            }
+           we don't have to check if condition. it will allow only the permitted threads'
+            store.addItem();
+            consumerSemaphore.release();
+        }
+    }
+
+    there's still a slight problem.
+
+    problem . 4
+
+    on the removal we letting xle threads to access this removeItem() one more critical section to be handled.
+        public void removeItem(){
+           this.items.remove(this.items.size()-1);
+        }
+
+        There are some ways you can solve this.
+
+        way 1.
+        Use a concurrent data structure - it won't allow to play with threads concurrently.
+
+        Instead of
+            private List<Object> items;
+
+        make it as
+            private ConcurrentLinkedQueue<Object> items;
+
+        Also change this line
+            this.items.remove(this.items.size()-1);
+        to
+            this.items.remove();
+
+        Now the size won't get exceeded.
+
+
+

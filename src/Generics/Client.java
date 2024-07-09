@@ -33,6 +33,12 @@ public class Client {
 //        this allowed because of backward compatibility
 //        Map map = new HashMap();
 
+//        this is not a good practice
+//        Pair p5 = new Pair();
+//        p5.first = "Akhil";
+//        p5.second = "Dev";
+//
+//        p5.first = 12.3;
 
     }
 }

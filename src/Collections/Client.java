@@ -38,11 +38,20 @@ public class Client {
 
 
 //        you can also write this as lambda expression (DESC)
-        System.out.println(s1);
+//       1. comparator using LE
+//        System.out.println(s1);
         Comparator<StudentComparable> c1 = (o1, o2) ->{
             return (int) (o2.attendance - o1.attendance);
         };
         Collections.sort(s1,c1);
+//        System.out.println(s1);
+
+
+//        2. u can also write  (ASC)
+        System.out.println(s1);
+        Collections.sort(s1, (o1, o2) ->{
+            return (int) (o1.attendance - o2.attendance);
+        });
         System.out.println(s1);
     }
 }

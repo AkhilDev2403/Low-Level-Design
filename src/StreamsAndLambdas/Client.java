@@ -9,7 +9,6 @@ public class Client {
 
 //        1. Anonymous class
         Runnable r1 = new Runnable(){
-
             @Override
             public void run() {
                 System.out.println("Running Runnable");

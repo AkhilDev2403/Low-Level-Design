@@ -1,4 +1,4 @@
-package StreamsAndLambdas;
+package LambdaExpressions;
 
 import java.util.Comparator;
 

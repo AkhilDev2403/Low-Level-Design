@@ -1,4 +1,4 @@
-package StreamsAndLambdas;
+package LambdaExpressions;
 
 public class Client {
     public static void main(String[] args) {

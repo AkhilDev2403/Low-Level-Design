@@ -1,4 +1,4 @@
-package BuilderPattern.V2;
+package BuilderPattern.V2.ModifiedCode1;
 
 public class StudentBuilder {
 

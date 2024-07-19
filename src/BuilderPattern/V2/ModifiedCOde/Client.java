@@ -1,4 +1,4 @@
-package BuilderPattern.V2;
+package BuilderPattern.V2.ModifiedCOde;
 
 public class Client {
     public static void main(String[] args) {

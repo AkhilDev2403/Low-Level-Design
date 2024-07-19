@@ -1,5 +1,7 @@
 package BuilderPattern.V1;
 
+import java.util.HashMap;
+
 public class Client {
     public static void main(String[] args) {
 
@@ -12,6 +14,15 @@ public class Client {
 
 
 //        but the problem here is we can't do any validations
+
+//        Solution . 3
+
+        HashMap<String, Object> map = new HashMap<>();
+
+//        too much flexible
+
+//        solution.4 - class
+//                create a new Builder class and use class here
 
     }
 }

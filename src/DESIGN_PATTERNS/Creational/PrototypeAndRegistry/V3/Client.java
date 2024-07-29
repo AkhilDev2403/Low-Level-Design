@@ -31,7 +31,9 @@ public class Client {
         StudentRegister register = new StudentRegister();
         fillRegistry(register);
 
-        Student s5 = register.getStudent("Student");
+//        now u can pass simply the key - class name
+        Student s5 = register.getStudent("IntelligentStudent");
+        Student s6 = register.getStudent("Student");
         System.out.println(s5);
 
 //        Student s6 = register.getStudent(Constants.INTELLIGENT_STUDENT);
